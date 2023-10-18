@@ -1,0 +1,35 @@
+# Maintainer: E5H4N <m.eshan@outlook.in>
+
+pkgname='payraos-grub-theme'
+pkgver='1.0.0'
+pkgrel='1'
+pkgdesc='Payra OS Grub Theme'
+arch=('any')
+url='https://github.com/payraos/payraos-grub-theme'
+license=('GPL3')
+install="${pkgname}".install
+
+depends=('grub')
+
+source=("git+${url}.git"
+        "${pkgname}.install"
+)
+sha256sums=('SKIP'
+            'SKIP'
+)
+
+package() {
+    msg 'Payra OS GRUB2 Theme'
+    for ((a=0;a<${#Theme_name[@]};a++))
+    do
+        install -dm755 "${pkgdir}"/usr/share/grub/themes/"${pkgname}-${Theme_name[${a}]}"/icons
+
+        install -Dm644 "${srcdir}/${pkgname}"/assets/backgrounds/"${Theme_name[${a}]}".png "${pkgdir}"/usr/share/grub/themes/"${pkgname}-${Theme_name[${a}]}"/background.png
+        install -Dm644 "${srcdir}/${pkgname}"/PayraOS/* "${pkgdir}"/usr/share/grub/themes/"${pkgname}-${Theme_name[${a}]}"
+        install -Dm644 "${srcdir}/${pkgname}"/assets/icons/color/* "${pkgdir}"/usr/share/grub/themes/"${pkgname}-${Theme_name[${a}]}"/icons
+    done
+}
+
+Theme_name=(
+    'PayraOS'
+)
