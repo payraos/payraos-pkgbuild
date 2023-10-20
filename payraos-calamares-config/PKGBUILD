@@ -1,1 +1,14 @@
+# Maintainer : E5H4N <m.eshan@outlook.in>
 
+pkgname = "payraos-calamares-config"
+pkgdesc = "Payra OS Calamares installer"
+pkgver = 1.0.0
+pkgrel = 1
+arch = ("any")
+url = "https://github.com/payraos/$pkgname"
+license = ("gpl")
+makedepends = ("git")
+source = ("git+$url.git")
+sha256sums = ("SKIP")
+pkgver(){
+  
